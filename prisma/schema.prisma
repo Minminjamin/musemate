@@ -1,0 +1,73 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  email      String @unique(map: "email_U")
+  name       String
+  profileImg String
+  userId     String
+
+  follower  Follow[]   @relation("Following")
+  following Follow[]   @relation("Follower")
+  playlists Playlist[] @relation("PlaylistUser")
+
+  // @@unique([userId])
+}
+
+model Follow {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  followerId  String @db.ObjectId
+  followingId String @db.ObjectId
+  follower    User   @relation("Following", fields: [followerId], references: [id])
+  following   User   @relation("Follower", fields: [followingId], references: [id])
+
+  @@unique([followerId, followingId])
+}
+
+model Playlist {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String @db.ObjectId
+  name        String
+  description String
+  songs       Song[] @relation("PlaylistSongs")
+  user        User   @relation("PlaylistUser", fields: [userId], references: [id])
+
+  @@unique([userId, name])
+}
+
+model Song {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  artist     String
+  playlistId String   @db.ObjectId
+  playlist   Playlist @relation("PlaylistSongs", fields: [playlistId], references: [id])
+}
+
+model Room {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  user1Id   String
+  user2Id   String
+  messages  Chat[]   @relation("ChatRoomMessages")
+
+  @@unique([user1Id, user2Id])
+}
+
+model Chat {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  senderId   String
+  receiverId String
+  createdAt  DateTime @default(now())
+  message    String
+  roomId     String   @db.ObjectId
+  room       Room     @relation("ChatRoomMessages", fields: [roomId], references: [id])
+}
