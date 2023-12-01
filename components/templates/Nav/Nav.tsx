@@ -21,7 +21,7 @@ const Nav = () => {
           <UserProfile
             icons={
               <>
-                <GoPersonFill />
+                <GoPersonFill className={S.firstIcon} />
                 <FaMessage />
               </>
             }
