@@ -1,0 +1,19 @@
+.searchContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 100%;
+    height: 40px;
+    border-radius: 50px;
+    padding-left: 25px;
+    background: #d9d9d9;
+    border: none;
+  }
+
+  .searchIcon {
+    position: absolute;
+    margin-left: 0.5%;
+  }
+}

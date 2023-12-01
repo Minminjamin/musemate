@@ -1,0 +1,16 @@
+.simplePlaylistContainer {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .playlistWrap {
+    display: flex;
+    align-items: center;
+
+    .headsetIcon {
+      margin-right: 2%;
+    }
+  }
+}
