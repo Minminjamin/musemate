@@ -7,8 +7,12 @@ import { FaMessage } from "react-icons/fa6";
 import { BiLogOut } from "react-icons/bi";
 import { IoIosSettings } from "react-icons/io";
 import SimplePlaylist from "@/components/atoms/SimplePlaylist/SimplePlaylist";
+import { useSession } from "next-auth/react";
+import { LuLogIn } from "react-icons/lu";
 
 const Nav = () => {
+  const { data: session } = useSession();
+
   return (
     <nav className={S.navContainer}>
       <h2>MuseMate</h2>
@@ -37,14 +41,18 @@ const Nav = () => {
 
       {/* 나의 프로필자 */}
       <section className={S.profileWrap}>
-        <UserProfile
-          icons={
-            <>
-              <IoIosSettings />
-              <BiLogOut />
-            </>
-          }
-        />
+        {session ? (
+          <UserProfile
+            icons={
+              <>
+                <IoIosSettings />
+                <BiLogOut />
+              </>
+            }
+          />
+        ) : (
+          <UserProfile name="로그인 해주세요." icons={<LuLogIn />} />
+        )}
       </section>
     </nav>
   );

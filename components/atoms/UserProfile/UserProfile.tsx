@@ -2,7 +2,13 @@ import React, { ReactNode } from "react";
 import S from "./UserProfile.module.scss";
 import Image from "next/image";
 
-const UserProfile = ({ icons }: { icons: ReactNode }) => {
+const UserProfile = ({
+  icons,
+  name = "user Name",
+}: {
+  icons: ReactNode;
+  name: string;
+}) => {
   return (
     <article className={S.profileContainer}>
       <div className={S.profileWrap}>
@@ -13,7 +19,7 @@ const UserProfile = ({ icons }: { icons: ReactNode }) => {
           height={30}
           className={S.img}
         />
-        <span>User Name</span>
+        <span>{name}</span>
       </div>
 
       <div className={S.iconWrap}>{icons}</div>
