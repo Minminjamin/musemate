@@ -3,8 +3,15 @@ import KakaoProvider from "next-auth/providers/kakao";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaClient } from "@prisma/client";
 import { ObjectId as MongoObjectID } from "mongodb";
-import { cloudinary } from "@/libs/cloudinary";
-import { randomId as userRandomId } from "@/utils/RandomId";
+import { randomId as userRandomId } from "@/utils/randomId";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+  api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET_KEY,
+  secure: true,
+});
 
 const prisma = new PrismaClient();
 
@@ -51,6 +58,7 @@ export const authOptions: NextAuthOptions = {
 
           try {
             const img = "public/user-2935527_1280.png";
+
             const imgUpload = await cloudinary.uploader.upload(img);
             const imgUrl = imgUpload.secure_url;
 
