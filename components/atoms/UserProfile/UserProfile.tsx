@@ -2,18 +2,22 @@ import React, { ReactNode } from "react";
 import S from "./UserProfile.module.scss";
 import Image from "next/image";
 
+interface Profile {
+  icons: ReactNode;
+  name?: string;
+  img?: string;
+}
+
 const UserProfile = ({
   icons,
   name = "user Name",
-}: {
-  icons: ReactNode;
-  name: string;
-}) => {
+  img = "https://res.cloudinary.com/musemate/image/upload/v1700721701/wupnnahnfrpclwutzxll.png",
+}: Profile) => {
   return (
     <article className={S.profileContainer}>
       <div className={S.profileWrap}>
         <Image
-          src="https://res.cloudinary.com/musemate/image/upload/v1700721701/wupnnahnfrpclwutzxll.png"
+          src={img}
           alt="유저 profile"
           width={30}
           height={30}

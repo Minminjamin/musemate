@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import S from "./Nav.module.scss";
 import UserProfile from "@/components/atoms/UserProfile/UserProfile";
 import Search from "@/components/atoms/Search/Search";
@@ -9,9 +9,12 @@ import { IoIosSettings } from "react-icons/io";
 import SimplePlaylist from "@/components/atoms/SimplePlaylist/SimplePlaylist";
 import { useSession } from "next-auth/react";
 import { LuLogIn } from "react-icons/lu";
+import { useUserData } from "@/hooks/useUserData";
 
 const Nav = () => {
   const { data: session } = useSession();
+
+  const { data: user } = useUserData();
 
   return (
     <nav className={S.navContainer}>
@@ -43,6 +46,8 @@ const Nav = () => {
       <section className={S.profileWrap}>
         {session ? (
           <UserProfile
+            name={user.userId}
+            img={user.profileImg}
             icons={
               <>
                 <IoIosSettings />
