@@ -5,7 +5,7 @@ import { FiMoreHorizontal } from "react-icons/fi";
 
 const SimplePlaylist = ({ name = "playlist" }: { name: string }) => {
   return (
-    <article className={S.simplePlaylistContainer}>
+    <div className={S.simplePlaylistContainer}>
       <div className={S.playlistWrap}>
         <IoMdHeadset size={30} className={S.headsetIcon} />
         <span>{name}</span>
@@ -14,7 +14,7 @@ const SimplePlaylist = ({ name = "playlist" }: { name: string }) => {
       <div className={S.playlistIconWrap}>
         <FiMoreHorizontal />
       </div>
-    </article>
+    </div>
   );
 };
 

@@ -1,7 +1,10 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import S from "@/styles/Home.module.scss";
-import { getSession, signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import SimplePlaylist from "@/components/atoms/SimplePlaylist/SimplePlaylist";
+import UserProfile from "@/components/atoms/UserProfile/UserProfile";
+import { GoPersonFill } from "react-icons/go";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +20,48 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main
-        className={`${S.main} ${inter.className} ${!session && S.loginWrap}`}
+        className={`${S.main} ${inter.className} ${
+          session ? S.logoutWrap : S.loginWrap
+        }`}
       >
         {session ? (
-          <button onClick={() => signOut()}>로그아웃</button>
+          <>
+            <figure className={S.banner}></figure>
+            <section className={S.myPlaylistWrap}>
+              <h2>
+                My Playlist <button className={S.playlistMore}>+</button>
+              </h2>
+              <article className={S.playlistWrap}>
+                <figure></figure>
+                <figure></figure>
+                <figure></figure>
+              </article>
+            </section>
+            <section className={S.recommandWrap}>
+              <article>
+                <h2>
+                  Recommand Playlist
+                  <button className={S.playlistMore}>+</button>
+                </h2>
+                <div className={S.simplePlaylistWrap}>
+                  <SimplePlaylist />
+                  <SimplePlaylist />
+                  <SimplePlaylist />
+                  <SimplePlaylist />
+                </div>
+              </article>
+              <article>
+                <h2>
+                  Recommand User <button className={S.playlistMore}>+</button>
+                </h2>
+                <div className={S.recommadUserWrap}>
+                  <UserProfile icons={<GoPersonFill />} />
+                  <UserProfile icons={<GoPersonFill />} />
+                  <UserProfile icons={<GoPersonFill />} />
+                </div>
+              </article>
+            </section>
+          </>
         ) : (
           <>
             <h3>Login</h3>

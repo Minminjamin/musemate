@@ -46,8 +46,8 @@ const Nav = () => {
       <section className={S.profileWrap}>
         {session ? (
           <UserProfile
-            name={user.userId}
-            img={user.profileImg}
+            name={user?.userId as string}
+            img={user?.profileImg}
             icons={
               <>
                 <IoIosSettings />

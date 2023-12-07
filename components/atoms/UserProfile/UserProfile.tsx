@@ -14,7 +14,7 @@ const UserProfile = ({
   img = "https://res.cloudinary.com/musemate/image/upload/v1700721701/wupnnahnfrpclwutzxll.png",
 }: Profile) => {
   return (
-    <article className={S.profileContainer}>
+    <div className={S.profileContainer}>
       <div className={S.profileWrap}>
         <Image
           src={img}
@@ -27,7 +27,7 @@ const UserProfile = ({
       </div>
 
       <div className={S.iconWrap}>{icons}</div>
-    </article>
+    </div>
   );
 };
 
