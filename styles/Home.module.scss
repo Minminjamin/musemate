@@ -46,9 +46,12 @@
     padding-top: 20px;
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
 
     article {
       width: calc(50% - 11px);
+      height: 100%;
+
       h2 {
         display: flex;
         justify-content: space-between;
@@ -60,16 +63,10 @@
         }
       }
 
-      .simplePlaylistWrap {
-        width: 100%;
-      }
-
+      .simplePlaylistWrap,
       .recommadUserWrap {
-        width: 100%;
-
-        > div {
-          margin-bottom: 3px;
-        }
+        height: 100%;
+        overflow: auto;
       }
     }
   }
