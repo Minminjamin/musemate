@@ -10,36 +10,42 @@ import SimplePlaylist from "@/components/atoms/SimplePlaylist/SimplePlaylist";
 import { useSession } from "next-auth/react";
 import { LuLogIn } from "react-icons/lu";
 import { useUserData } from "@/hooks/useUserData";
+import { useRouter } from "next/router";
 
 const Nav = () => {
   const { data: session } = useSession();
 
   const { data: user } = useUserData();
 
+  const router = useRouter();
+
   return (
     <nav className={S.navContainer}>
-      <h2>MuseMate</h2>
-
-      <section className={S.searchWrap}>
-        {/* 팔로우 유저 기능 */}
-        <Search />
-
-        <section className={S.userWrap}>
-          <UserProfile
-            icons={
-              <>
-                <GoPersonFill className={S.firstIcon} />
-                <FaMessage />
-              </>
-            }
-          />
-          <UserProfile icons={<GoPersonFill />} />
-        </section>
+      <section className={S.top}>
+        <h1 onClick={() => router.push("/")}>MuseMate</h1>
       </section>
 
-      <section className={S.playlistWrap}>
-        {/* 내 플레이리스트 보기와 만들기, 퍼블리싱만 진행, 추후 개발 */}
-        <SimplePlaylist />
+      <section className={S.infoWrap}>
+        <article className={S.searchWrap}>
+          {/* 팔로우 유저 기능 */}
+          <Search />
+
+          <div className={S.userWrap}>
+            <UserProfile
+              icons={
+                <div className={S.twoIconWrap}>
+                  <GoPersonFill className={S.firstIcon} />
+                  <FaMessage />
+                </div>
+              }
+            />
+            <UserProfile icons={<GoPersonFill />} />
+          </div>
+        </article>
+        <article className={S.playlistWrap}>
+          {/* 내 플레이리스트 보기와 만들기, 퍼블리싱만 진행, 추후 개발 */}
+          <SimplePlaylist />
+        </article>
       </section>
 
       {/* 나의 프로필자 */}
