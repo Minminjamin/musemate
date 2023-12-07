@@ -7,7 +7,7 @@ import { FaMessage } from "react-icons/fa6";
 import { BiLogOut } from "react-icons/bi";
 import { IoIosSettings } from "react-icons/io";
 import SimplePlaylist from "@/components/atoms/SimplePlaylist/SimplePlaylist";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { LuLogIn } from "react-icons/lu";
 import { useUserData } from "@/hooks/useUserData";
 import { useRouter } from "next/router";
@@ -57,7 +57,7 @@ const Nav = () => {
             icons={
               <>
                 <IoIosSettings className={S.icon} />
-                <BiLogOut className={S.icon} />
+                <BiLogOut className={S.icon} onClick={() => signOut()} />
               </>
             }
           />

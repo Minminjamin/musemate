@@ -7,10 +7,33 @@
   padding: 0.5% 1.5%;
 
   .menuWrap {
-    display: flex;
+    .icon {
+      cursor: pointer;
 
+      &:hover {
+        scale: 1.1;
+      }
+    }
+
+    .messageIcon {
+      &:hover {
+        animation: message 0.7s ease;
+      }
+    }
+
+    display: flex;
     justify-content: space-between;
     width: 10%;
     // border: solid 1px red;
+  }
+}
+
+@keyframes message {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(90deg);
   }
 }
