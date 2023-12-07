@@ -79,6 +79,14 @@
   align-items: center;
   justify-content: center;
 
+  .icon {
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
   .btnWrap {
     width: 100%;
     display: flex;

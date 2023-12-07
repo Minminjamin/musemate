@@ -34,12 +34,12 @@ const Nav = () => {
             <UserProfile
               icons={
                 <div className={S.twoIconWrap}>
-                  <GoPersonFill className={S.firstIcon} />
+                  <GoPersonFill className={`${S.firstIcon} ${S.icon}`} />
                   <FaMessage />
                 </div>
               }
             />
-            <UserProfile icons={<GoPersonFill />} />
+            <UserProfile icons={<GoPersonFill className={S.icon} />} />
           </div>
         </article>
         <article className={S.playlistWrap}>
@@ -56,8 +56,8 @@ const Nav = () => {
             img={user?.profileImg}
             icons={
               <>
-                <IoIosSettings />
-                <BiLogOut />
+                <IoIosSettings className={S.icon} />
+                <BiLogOut className={S.icon} />
               </>
             }
           />

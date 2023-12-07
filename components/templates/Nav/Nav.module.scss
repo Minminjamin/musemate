@@ -5,6 +5,15 @@
   color: black;
   padding-bottom: 0;
 
+  // 공통 스타일이라 상단에 선언
+  .icon {
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
   .top {
     display: flex;
     height: 10%;

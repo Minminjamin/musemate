@@ -5,6 +5,14 @@
   align-items: center;
   padding: 2% 0;
 
+  .icon {
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
   .playlistWrap {
     display: flex;
     align-items: center;

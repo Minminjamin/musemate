@@ -12,7 +12,7 @@ const SimplePlaylist = ({ name = "playlist" }: { name: string }) => {
       </div>
 
       <div className={S.playlistIconWrap}>
-        <FiMoreHorizontal />
+        <FiMoreHorizontal className={S.icon} />
       </div>
     </div>
   );

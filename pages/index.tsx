@@ -58,7 +58,7 @@ export default function Home() {
                   Recommand User <button className={S.playlistMore}>+</button>
                 </h2>
                 <div className={S.recommadUserWrap}>
-                  <UserProfile icons={<GoPersonFill />} />
+                  <UserProfile icons={<GoPersonFill className={S.icon} />} />
                   <UserProfile icons={<GoPersonFill />} />
                   <UserProfile icons={<GoPersonFill />} />
                 </div>
