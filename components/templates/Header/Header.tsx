@@ -8,7 +8,7 @@ import { signOut } from "next-auth/react";
 const Header = ({ pageName }: { pageName: string }) => {
   return (
     <header className={S.headerContainer}>
-      <h1>{pageName}</h1>
+      <h1>{pageName} Page</h1>
 
       <section className={S.menuWrap}>
         <AiFillPlusCircle size={24} className={`${S.messageIcon} ${S.icon}`} />
