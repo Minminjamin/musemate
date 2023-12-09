@@ -56,7 +56,10 @@ const Nav = () => {
             img={user?.profileImg}
             icons={
               <>
-                <IoIosSettings className={S.icon} />
+                <IoIosSettings
+                  className={S.icon}
+                  onClick={() => router.push(`/${user?.id}/profile`)}
+                />
                 <BiLogOut className={S.icon} onClick={() => signOut()} />
               </>
             }

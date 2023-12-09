@@ -5,8 +5,7 @@ import { SessionProvider } from "next-auth/react";
 import Header from "@/components/templates/Header/Header";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
-import { useUserData } from "@/hooks/useUserData";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const queryClient = new QueryClient();
