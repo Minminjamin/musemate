@@ -8,13 +8,16 @@ import S from "./ProfilePage.module.scss";
 
 const ProfilePage = ({ user, btn }: { user: any; btn: ReactNode }) => {
   const [myPage, setMyPage] = useState<boolean>(false);
-
   const { data } = useUserData();
   const router = useRouter();
 
   useEffect(() => {
     if (router.asPath.split("/")?.[1] === data?.id) setMyPage(true);
-  }, []);
+    console.log(myPage);
+    return () => {
+      setMyPage(false);
+    };
+  }, [myPage, setMyPage]);
 
   return (
     <section className={S.profilePageContainer}>
