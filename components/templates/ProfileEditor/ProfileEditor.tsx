@@ -17,6 +17,8 @@ const ProfileEditor = ({ user }): any => {
   const onChangeImg = (e: React.ChangeEvent<HTMLInputElement>) => {
     imgRef.current = null;
     if (e.target.files) imgRef.current = e.target.files[0];
+
+    console.log(imgRef.current);
   };
 
   const onChangeProfile = async () => {
@@ -32,8 +34,14 @@ const ProfileEditor = ({ user }): any => {
           name: nameRef.current?.value,
         }),
       });
+
       if (imgRef.current) {
         const formData = new FormData();
+        formData.append("file", imgRef.current);
+        await fetch("api/profile/updateImg", {
+          method: "POST",
+          body: formData,
+        });
       }
     } catch (err) {
       console.log(err);
